@@ -3,7 +3,7 @@ This project is a Command-Line AI agent with Python and OpenRouter
 The program takes a prompt user wrote in the terminal, sends it to an AI model through OpenRouter, 
 and finally prints the response
 
-## Requirement
+## Requirements
 - Python 3
 - uv
 - OpenRouter API Key
