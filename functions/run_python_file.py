@@ -60,6 +60,13 @@ schema_run_python_file = {
 					"type": "string",
 					"description": "Directory path to list files from, relative to the working directory (default is the working directory itself)",
 				},
+				"args":{
+					"type":"array",
+					"items":{
+						"type":"string"
+					},
+					"description":"An optional command-line argument to pass to this python file"
+				}
 			},
 		"required": ["file_path"]
 		},
