@@ -28,27 +28,33 @@ def main():
 		{"role":"user", "content": args.user_prompt}
 	]
 
-	response = client.chat.completions.create(
-		model="openrouter/free",
- 		messages=messages,
-		temperature=0,
-		tools=available_functions,
-	)
-	
-	message= response.choices[0].message
-	if message.tool_calls:
-		for tool_call in message.tool_calls:
-			result_message= call_function(tool_call)
+	for _ in range(20):
+		response = client.chat.completions.create(
+			model="openrouter/free",
+ 			messages=messages,
+			temperature=0,
+			tools=available_functions,
+		)
 
-			if not result_message.get("content"):
-				raise RuntimeError("Tool call returned empty content")
+		message= response.choices[0].message
+		messages.append(message)
 
-			if args.verbose:
-				print(f"-> {result_message['content']}")
-	else:
-		print(message.content)
-	if response.usage is None:
-		raise RuntimeError("API response usage is unavailable")
+		if message.tool_calls:
+			for tool_call in message.tool_calls:
+				result_message= call_function(tool_call)
+
+				if not result_message.get("content"):
+					raise RuntimeError("Tool call returned empty content")
+				
+				messages.append(result_message)
+
+				if args.verbose:
+					print(f"-> {result_message['content']}")
+		else:
+			print(message.content)
+
+		if response.usage is None:
+			raise RuntimeError("API response usage is unavailable")
 
 	if args.verbose: 
 		print(f"User prompt: {args.user_prompt}")
