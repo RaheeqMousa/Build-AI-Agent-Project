@@ -19,9 +19,9 @@ The agents uses Four tools:
 - get_files_info which lists files and dictionaries
 - get_file_content which reads file contents
 - write_file which overwrites contents or creates of a file
-- run_python_file which runs python file ans return the result
-All tools' results are added back to the conservation "messages variable" so the LLM can use them in the next iteration.<br>
-Also, the agent is limited to 20 iterations to prevent an infinite loops.
+run_python_file which runs python file ans return the result
+All tool results are added back to the conversation through the `messages` variable in main.py, allowing the LLM to use them in the next iteration.<br>
+The agent is limited to 20 iterations to prevent infinite loops.
 
 ```mermaid
 flowchart LR
