@@ -20,7 +20,7 @@ The agents uses Four tools:
 - get_file_content which reads file contents
 - write_file which overwrites contents or creates of a file
 - run_python_file which runs python file ans return the result
-All tools' results are added back to the conservation "messages variable" so the LLM can use them in the next iteration
+All tools' results are added back to the conservation "messages variable" so the LLM can use them in the next iteration.<br>
 Also, the agent is limited to 20 iterations to prevent an infinite loops.
 
 ```mermaid
@@ -83,6 +83,6 @@ flowchart LR
 ```
 
 ## Configuration
-Create a .env file and put inside it you OpenRouter API Key as
-OPENROUTER_API_KEY=your_api_key_here
-And be sure to be included in .gitignore file.
+Create a .env file and put inside it you OpenRouter API Key as<br>
+OPENROUTER_API_KEY=your_api_key_here<br>
+And be sure to be included in .gitignore file.<br>
